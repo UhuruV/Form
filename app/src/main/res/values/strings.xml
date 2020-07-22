@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Form</string>
+    <string name="UserName">Name</string>
+    <string name="etUserName">Enter UserName</string>
+    <string name="name">Enter Username</string>
+    <string name="etPassword">Enter Password</string>
+    <string name="button">log in</string>
+</resources>
