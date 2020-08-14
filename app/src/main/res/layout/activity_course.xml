@@ -7,7 +7,7 @@
     tools:context=".CourseActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLogin"
+        android:id="@+id/rvCourses"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"

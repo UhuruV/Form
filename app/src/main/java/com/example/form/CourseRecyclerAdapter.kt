@@ -1,47 +1,31 @@
 package com.example.form
 
-import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import kotlinx.android.synthetic.main.course_row_item.view.*
+import kotlinx.android.synthetic.main.activity_course2.view.*
 
 
-class CourseRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var items: List<CourseItem>=ArrayList()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
+class CourseAdapter (var courseList:List<Course>): RecyclerView.Adapter<CourseAdapter.CoursesViewHolder>(){
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ):CoursesViewHolder {
+        var itemView= LayoutInflater.from(parent.context).inflate(R.layout.course_row_item,parent,false)
+        return CoursesViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return courseList.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+    override fun onBindViewHolder(holder:CoursesViewHolder, position: Int) {
+        holder.rowView.tvCourseCode.text=courseList[position].courseCode
+        holder.rowView.tvCourseName.text=courseList[position].courseName
+        holder.rowView.tvCourseInstructor.text=courseList[position].courseInstructor
+        holder.rowView.tvCourseDescription.text=courseList[position].courseDescription
     }
+class CoursesViewHolder(val rowView: View):RecyclerView.ViewHolder(rowView)
 
-    class CourseViewHolder constructor(
-        itemView: View
-    ) : RecyclerView.ViewHolder(itemView) {
-        val courseName = itemView.course_name
-        val course_id = itemView.course_id
-        val course_code = itemView.course_code
-        val course_instructor = itemView.course_instructor
-        val course_description = itemView.course_description
-
-        fun bind(course:CourseItem){
-            courseName.setText(course.courseName)
-            course_id.setText(course.courseId)
-            course_code.setText(course.courseCode)
-            course_description.setText(course.description)
-            course_instructor.setText(course.instructor)
-        }
-    }
 }
