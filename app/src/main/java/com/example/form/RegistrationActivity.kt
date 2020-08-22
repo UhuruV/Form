@@ -12,10 +12,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class RegistrationActivity : AppCompatActivity() {
+class  RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+
 
         regButton.setOnClickListener {
             val name = etName.text.toString()
@@ -24,25 +26,45 @@ class RegistrationActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
             val confirm = etConfirmPassword.text.toString()
 
-            var requestBody= MultipartBody.Builder().setType(MultipartBody.FORM)
+            
+
+            val requestBody= MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("first_name",name)
                 .addFormDataPart("email",email)
                 .addFormDataPart("password",password)
                 .addFormDataPart("phone_number",phoneNumber)
                 .addFormDataPart("last_name",confirm)
                 .build()
+            if(name.isEmpty()){
+                etName.error="Name required"
+            }
+            if ( email.isBlank()){
+                etEmailAddres.error="Email required"
+            }
+            if ( phoneNumber.isBlank()){
+                etPNnumber.error="Phone Number Required"
+            }
+            if ( password.isBlank()){
+                etPassword.error="Password Required"
+            }
+            if ( confirm.isBlank()){
+                etConfirmPassword.error="Please Confirm Your Password"
+            }
+            else {
+                registerStudents(requestBody)
+            }
 
             Toast.makeText(baseContext, password, Toast.LENGTH_LONG).show()
             Toast.makeText(baseContext, confirm, Toast.LENGTH_LONG).show()
             Toast.makeText(baseContext, email, Toast.LENGTH_LONG).show()
         }
     }
-          fun registerStudents(requestBody: RequestBody){
+          private fun registerStudents(requestBody: RequestBody){
               val apiClient=ApiClient.buildService(ApiInterface::class.java)
               val registrationCall=apiClient.registerStudent(requestBody)
               registrationCall.enqueue(object : Callback<RegistrationResponse>{
                   override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
-                      Toast.makeText(baseContext,t.message,Toast.LENGTH_LONG).show()
+                      Toast.makeText(baseContext,t.message,Toast.LENGTH_LONG).show() 
                   }
 
                   override fun onResponse(
@@ -52,6 +74,21 @@ class RegistrationActivity : AppCompatActivity() {
                       if (response.isSuccessful){
                           Toast.makeText(baseContext,response.body()?.message,Toast.LENGTH_LONG).show()
                           startActivity(Intent(baseContext,MainActivity::class.java))
+
+
+                         var i = progress_circular!!.progress
+                          Thread(Runnable {
+                              while (i < 100) {
+                                  i += 5
+                                  try {
+                                      Thread.sleep(100)
+                                  } catch (e: InterruptedException) {
+                                      e.printStackTrace()
+                                  }
+
+                              }
+                          }).start()
+
                       }
                       else{
                           Toast.makeText(baseContext,response.errorBody().toString(),Toast.LENGTH_LONG).show()

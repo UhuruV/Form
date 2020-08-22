@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_course2.view.*
+import kotlinx.android.synthetic.main.course_row_item.view.*
+import kotlinx.android.synthetic.main.course_row_item.view.tvD as tvD1
 
 
 class CourseAdapter (var courseList:List<Course>): RecyclerView.Adapter<CourseAdapter.CoursesViewHolder>(){
@@ -23,8 +24,8 @@ class CourseAdapter (var courseList:List<Course>): RecyclerView.Adapter<CourseAd
     override fun onBindViewHolder(holder:CoursesViewHolder, position: Int) {
         holder.rowView.tvCourseCode.text=courseList[position].courseCode
         holder.rowView.tvCourseName.text=courseList[position].courseName
-        holder.rowView.tvCourseInstructor.text=courseList[position].courseInstructor
-        holder.rowView.tvCourseDescription.text=courseList[position].courseDescription
+        holder.rowView.tvCI.text=courseList[position].courseInstructor
+        holder.rowView.tvD1.text=courseList[position].courseDescription
     }
 class CoursesViewHolder(val rowView: View):RecyclerView.ViewHolder(rowView)
 

@@ -5,4 +5,14 @@
     <string name="name">Enter Username</string>
     <string name="etPassword">Enter Password</string>
     <string name="button">log in</string>
+    <string name="cousername">CouserName:</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="front_end_dev">Front-end dev</string>
+    <string name="coursecode">CourseCode:</string>
+    <string name="kt001">KT001</string>
+    <string name="courseid">CourseId:</string>
+    <string name="kt">KT</string>
+    <string name="instructor">Instructor:</string>
+    <string name="CourseName">CourseName</string>
+    <string name="Kotlin">Kotlin</string>
 </resources>

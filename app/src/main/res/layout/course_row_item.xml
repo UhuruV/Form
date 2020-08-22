@@ -7,60 +7,131 @@
     android:layout_height="match_parent"
     tools:ignore="ExtraText,UnknownId">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNames"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/tvCourseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/CourseName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/course_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:id="@+id/container1" />
+    <TextView
+        android:id="@+id/tvCN"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="46dp"
+        android:text="@string/Kotlin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCourseName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/course_name"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCourseCode"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="10sp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/coursecode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCourseName" />
+
     <TextView
-        android:id="@+id/course_id"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCC"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="10sp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/kt001"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCourseCode"
+        app:layout_constraintTop_toBottomOf="@+id/tvCN" />
+
     <TextView
-        android:id="@+id/course_code"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCourseId"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="10sp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/courseid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCourseCode" />
+
     <TextView
-        android:id="@+id/course_instructor"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCI"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="10sp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/kt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCourseId"
+        app:layout_constraintTop_toBottomOf="@+id/tvCC" />
+
     <TextView
-        android:id="@+id/course_description"
-        android:layout_width="match_parent"
+        android:id="@+id/tvInstructor"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="10sp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/instructor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCourseId" />
+
+    <TextView
+        android:id="@+id/tvI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="23dp"
+        android:text="Aria McGamrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvInstructor"
+        app:layout_constraintTop_toBottomOf="@+id/tvCI"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="22dp"
+        android:text="Description:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInstructor"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/front_end_dev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvI" />
+
+    <View
+        android:id="@+id/hD"
+        android:layout_width="409dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="27dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

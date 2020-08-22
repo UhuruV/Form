@@ -8,3 +8,4 @@ data class Course(
     var courseDescription:String,
     var courseInstructor:String
 )
+

@@ -2,6 +2,7 @@ package com.example.form
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +33,13 @@ class MainActivity : AppCompatActivity() {
                 .addFormDataPart("email",email)
                 .addFormDataPart("password",password)
                 .build()
+
+                if (email.isNullOrEmpty() || email.isBlank()){
+                    etEmailAddres.error="Email is required"
         }
+                if(password.isNullOrEmpty() || password.isBlank()){
+                    etPassword.error="Please input password"
+                }
     }
         recycler_view.layoutManager= LinearLayoutManager(baseContext)
     }
@@ -43,12 +50,24 @@ class MainActivity : AppCompatActivity() {
        loginCall.enqueue(object : Callback<LoginResponse>{
            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                Toast.makeText(baseContext,t.message,Toast.LENGTH_LONG).show()
+
+               
            }
 
            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     Toast.makeText(baseContext,response.body()?.message,Toast.LENGTH_LONG).show()
                     startActivity(Intent(baseContext,MainActivity::class.java))
+                    val accessToken=response.body()?.accessToken
+                    val sharedPreferences= getDefaultSharedPreferences(baseContext)
+
+                    val editor=sharedPreferences.edit()
+                    editor.putString("ACCESS_TOKEN_KEY"," ")
+                    editor.apply()
+
+                    val intent=Intent(baseContext,CourseActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                else{
                     Toast.makeText(baseContext,response.errorBody().toString(),Toast.LENGTH_LONG).show()
@@ -56,6 +75,10 @@ class MainActivity : AppCompatActivity() {
            }
        })
    }
+}
+
+
+
 }
 
 
