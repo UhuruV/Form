@@ -1,19 +1,19 @@
-package com.example.form
+package com.example.form.models
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.form.R
 import kotlinx.android.synthetic.main.course_row_item.view.*
-import retrofit2.Callback
 import kotlinx.android.synthetic.main.course_row_item.view.tvD as tvD1
 
 
-class CourseAdapter(var courseList: List<Course>, param: Callback<CourseResponse>): RecyclerView.Adapter<CourseAdapter.CoursesViewHolder>(){
+class CourseAdapter(var courseList: List<Course>): RecyclerView.Adapter<CourseAdapter.CoursesViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ):CoursesViewHolder {
+    ): CoursesViewHolder {
         var itemView= LayoutInflater.from(parent.context).inflate(R.layout.course_row_item,parent,false)
         return CoursesViewHolder(itemView)
     }
@@ -22,7 +22,7 @@ class CourseAdapter(var courseList: List<Course>, param: Callback<CourseResponse
         return courseList.size
     }
 
-    override fun onBindViewHolder(holder:CoursesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CoursesViewHolder, position: Int) {
         holder.rowView.tvCourseCode.text=courseList[position].courseCode
         holder.rowView.tvCourseName.text=courseList[position].courseName
         holder.rowView.tvCI.text=courseList[position].courseInstructor

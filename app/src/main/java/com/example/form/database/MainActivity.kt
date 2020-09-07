@@ -1,4 +1,4 @@
-package com.example.form
+package com.example.form.database
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,12 @@ import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.form.*
+import com.example.form.activities.CourseActivity
+import com.example.form.activities.RegistrationActivity
+import com.example.form.api.ApiClient
+import com.example.form.api.LoginApiInterface
+import com.example.form.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_data_source.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.etPassword
@@ -22,8 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tvRegister.setOnClickListener {
-            Intent(baseContext,RegistrationActivity::class.java)
-            startActivity(Intent(baseContext,RegistrationActivity::class.java))
+            Intent(baseContext, RegistrationActivity::class.java)
+            startActivity(Intent(baseContext, RegistrationActivity::class.java))
 
             regButton.setOnClickListener {
                 val email = etEmailAddres.text.toString()
@@ -45,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
    fun loginStudents(requestBody: RequestBody){
-       val apiClient=ApiClient.buildService(LoginApiInterface::class.java)
+       val apiClient= ApiClient.buildService(LoginApiInterface::class.java)
        val loginCall=apiClient.loginStudent(requestBody)
        loginCall.enqueue(object : Callback<LoginResponse>{
            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
@@ -57,7 +63,7 @@ class MainActivity : AppCompatActivity() {
            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     Toast.makeText(baseContext,response.body()?.message,Toast.LENGTH_LONG).show()
-                    startActivity(Intent(baseContext,MainActivity::class.java))
+                    startActivity(Intent(baseContext, MainActivity::class.java))
                     val accessToken=response.body()?.accessToken
                     val sharedPreferences= getDefaultSharedPreferences(baseContext)
 
@@ -65,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                     editor.putString("ACCESS_TOKEN_KEY"," ")
                     editor.apply()
 
-                    val intent=Intent(baseContext,CourseActivity::class.java)
+                    val intent=Intent(baseContext, CourseActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

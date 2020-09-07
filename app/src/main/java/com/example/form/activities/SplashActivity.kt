@@ -1,9 +1,10 @@
-package com.example.form
+package com.example.form.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.example.form.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,11 +15,11 @@ class SplashActivity : AppCompatActivity() {
         val accessToken=sharedPreferences.getString("ACCESS_TOKEN_KEY"," ")
 
         if (accessToken.isNullOrEmpty()){
-            val intent= Intent(baseContext,RegistrationActivity::class.java)
+            val intent= Intent(baseContext, RegistrationActivity::class.java)
             startActivity(intent)
         }
         else{
-            val intent=Intent(baseContext,CourseActivity::class.java)
+            val intent=Intent(baseContext, CourseActivity::class.java)
             startActivity(intent)
         }
     }

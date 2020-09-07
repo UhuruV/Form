@@ -1,5 +1,6 @@
-package com.example.form
+package com.example.form.models
 
+import com.example.form.activities.Courses
 import com.google.gson.annotations.SerializedName
 
 data class CourseResponse (

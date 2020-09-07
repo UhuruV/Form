@@ -1,4 +1,4 @@
-package com.example.form
+package com.example.form.activities
 
 import android.app.Application
 import com.facebook.stetho.Stetho

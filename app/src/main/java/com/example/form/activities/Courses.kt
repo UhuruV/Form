@@ -1,4 +1,4 @@
-package com.example.form
+package com.example.form.activities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

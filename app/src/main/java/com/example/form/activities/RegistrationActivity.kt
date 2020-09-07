@@ -1,9 +1,14 @@
-package com.example.form
+package com.example.form.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.form.api.ApiClient
+import com.example.form.api.ApiInterface
+import com.example.form.R
+import com.example.form.models.RegistrationResponse
+import com.example.form.database.MainActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -60,7 +65,7 @@ class  RegistrationActivity : AppCompatActivity() {
         }
     }
           private fun registerStudents(requestBody: RequestBody){
-              val apiClient=ApiClient.buildService(ApiInterface::class.java)
+              val apiClient= ApiClient.buildService(ApiInterface::class.java)
               val registrationCall=apiClient.registerStudent(requestBody)
               registrationCall.enqueue(object : Callback<RegistrationResponse>{
                   override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
@@ -73,7 +78,7 @@ class  RegistrationActivity : AppCompatActivity() {
                   ) {
                       if (response.isSuccessful){
                           Toast.makeText(baseContext,response.body()?.message,Toast.LENGTH_LONG).show()
-                          startActivity(Intent(baseContext,MainActivity::class.java))
+                          startActivity(Intent(baseContext, MainActivity::class.java))
 
 
                          var i = progress_circular!!.progress

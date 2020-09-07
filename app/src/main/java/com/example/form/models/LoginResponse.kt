@@ -1,4 +1,4 @@
-package com.example.form
+package com.example.form.models
 
 import com.google.gson.annotations.SerializedName
 
